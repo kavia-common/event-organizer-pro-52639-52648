@@ -25,14 +25,25 @@ export default [
         beforeEach: "readonly",
         it: "readonly",
         expect: "readonly",
-        // Browser globals
+
+        // Browser globals (required for Angular apps)
         HTMLElement: "readonly",
+        HTMLInputElement: "readonly",
+        window: "readonly",
+        localStorage: "readonly",
+        CustomEvent: "readonly",
+        Event: "readonly",
+
         // Node.js globals
         process: "readonly",
         console: "readonly"
       }
     },
     rules: {
+      // This repo uses the TypeScript parser but does not register the @typescript-eslint plugin rules.
+      // If rule comments reference these, ESLint errors with "Definition for rule ... was not found".
+      "@typescript-eslint/no-explicit-any": "off",
+
       "no-undef": "error",
       "no-unused-vars": "off", // Turn off since TS handles this
       "no-unreachable": "error",
